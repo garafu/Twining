@@ -6,9 +6,9 @@ Can develop flat-design application easily.
 
 **Table of Contents**
 
-* [Getting Started](#Getting-Started)
-* [Quick Reference](#Quick-Reference)
-* [License](#License)
+* [Getting Started](#getting-started)
+* [Quick Reference](#quick-reference)
+* [License](#license)
 
 
 Getting Started
