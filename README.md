@@ -6,14 +6,13 @@ Can develop flat-design application easily.
 
 **Table of Contents**
 
-* [Getting Started](#Getting Started)
-* [Quick Reference](#Quick Reference)
+* [Getting Started](#Getting-Started)
+* [Quick Reference](#Quick-Reference)
 * [License](#License)
 
 
 Getting Started
 -------------------------
----
 
 
 1. Create new "WPF Application"
@@ -44,7 +43,6 @@ Getting Started
 
 Quick Reference
 -------------------------
----
 
 ### Window
 
@@ -82,6 +80,5 @@ Sample code is following.
 
 License
 --------------------------
----
 "Twining" released under the MIT license.  
 Please see [MIT-LICENSE.tx](https://github.com/garafu/Twining/blob/master/MIT-LICENSE.txt)t for details.
