@@ -1,0 +1,155 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:twining="clr-namespace:Twining">
+
+    <Style x:Key="caption-icon" TargetType="Button">
+        <Setter Property="Height" Value="{x:Static SystemParameters.WindowCaptionButtonHeight}" />
+        <Setter Property="Width" Value="{x:Static SystemParameters.WindowCaptionButtonHeight}" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderBrush" Value="Transparent" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="WindowChrome.IsHitTestVisibleInChrome" Value="True" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ButtonBase">
+                    <Border Background="{TemplateBinding Background}"
+                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                    BorderThickness="{TemplateBinding BorderThickness}" >
+                        <ContentPresenter HorizontalAlignment="Center"
+                                                  VerticalAlignment="Center" />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="caption-button" TargetType="Button">
+        <Setter Property="Height" Value="{x:Static SystemParameters.WindowCaptionButtonHeight}" />
+        <Setter Property="Width" Value="{x:Static SystemParameters.WindowCaptionButtonWidth}" />
+        <Setter Property="Background" Value="#ffffff" />
+        <Setter Property="BorderBrush" Value="Transparent" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Foreground" Value="#333333" />
+        <Setter Property="FontFamily" Value="Marlett" />
+        <Setter Property="WindowChrome.IsHitTestVisibleInChrome" Value="True" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ButtonBase">
+                    <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}" >
+                        <ContentPresenter HorizontalAlignment="Center"
+                                          VerticalAlignment="Center"
+                                          Cursor="{TemplateBinding Cursor}" />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="true">
+                <Setter Property="Background" Value="#e6e6e6" />
+                <Setter Property="BorderBrush" Value="#adadad" />
+                <Setter Property="Foreground" Value="#333333" />
+            </Trigger>
+            <Trigger Property="IsPressed" Value="true">
+                <Setter Property="Background" Value="#d4d4d4" />
+                <Setter Property="BorderBrush" Value="#8c8c8c" />
+                <Setter Property="Foreground" Value="#333333" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="wnd-metro" TargetType="Window">
+        <Setter Property="WindowStyle" Value="None" />
+        <Setter Property="WindowChrome.WindowChrome">
+            <Setter.Value>
+                <WindowChrome GlassFrameThickness="0"
+                              CornerRadius="0"
+                              ResizeBorderThickness="8"/>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate x:Name="window" TargetType="Window">
+                    <Border x:Name="border"
+                            Background="#ffffff"
+                            BorderBrush="#cccccc"
+                            BorderThickness="1">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0">
+                                <Button x:Name="icon"
+                                        HorizontalAlignment="Left"
+                                        Command="{x:Static twining:WindowCommands.ShowSystemMenu}"
+                                        CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window}}"
+                                        Style="{StaticResource caption-icon}">
+                                    <Image Source="{TemplateBinding Icon}"
+                                           Width="{x:Static SystemParameters.WindowCaptionButtonHeight}"
+                                           Height="{x:Static SystemParameters.WindowCaptionButtonHeight}"/>
+                                </Button>
+                                <TextBlock x:Name="title"
+                                           Text="{TemplateBinding Title}"
+                                           VerticalAlignment="Center">
+                                    <TextBlock.Margin>
+                                        <Thickness Left="{x:Static SystemParameters.WindowCaptionButtonWidth}" />
+                                    </TextBlock.Margin>
+                                </TextBlock>
+                                <StackPanel Orientation="Horizontal"
+                                            HorizontalAlignment="Right"
+                                            VerticalAlignment="Top">
+                                    <Button x:Name="minimize"
+                                            Content="0"
+                                            Style="{StaticResource caption-button}"
+                                            Command="{x:Static twining:WindowCommands.Minimize}"
+                                            CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window}}"/>
+                                    <Button x:Name="maximize"
+                                            Content="1"
+                                            Style="{StaticResource caption-button}"
+                                            Command="{x:Static twining:WindowCommands.Maximize}"
+                                            CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window}}"/>
+                                    <Button x:Name="close"
+                                            Content="r"
+                                            Style="{StaticResource caption-button}"
+                                            Command="{x:Static twining:WindowCommands.Close}"
+                                            CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window}}"/>
+                                </StackPanel>
+                            </Grid>
+                            <Grid Grid.Row="1">
+                                <ContentPresenter x:Name="contents"
+                                                  HorizontalAlignment="Stretch"
+                                                  VerticalAlignment="Stretch">
+                                </ContentPresenter>
+                            </Grid>
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="WindowState" Value="Maximized">
+                            <Setter TargetName="border" Property="BorderThickness" Value="8" />
+                            <Setter TargetName="border" Property="BorderBrush" Value="#ffffff" />
+                            <Setter TargetName="maximize" Property="Content" Value="2" />
+                            <Setter TargetName="maximize" Property="Command" Value="{x:Static twining:WindowCommands.Restore}" />
+                        </Trigger>
+                        <Trigger Property="WindowState" Value="Normal">
+                            <Setter TargetName="border" Property="BorderThickness" Value="1" />
+                            <Setter TargetName="border" Property="BorderBrush" Value="#cccccc" />
+                            <Setter TargetName="maximize" Property="Content" Value="1" />
+                            <Setter TargetName="maximize" Property="Command" Value="{x:Static twining:WindowCommands.Maximize}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="WindowState" Value="Maximized">
+                <Setter Property="WindowChrome.ResizeBorderThickness" Value="0" />
+            </Trigger>
+            <Trigger Property="WindowState" Value="Normal">
+                <Setter Property="WindowChrome.ResizeBorderThickness" Value="8" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+</ResourceDictionary>
