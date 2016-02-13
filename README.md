@@ -74,7 +74,6 @@ Sample code is following.
 
 ```
 <Button Content="Button" Style="{StaticResource btn-primary}"/>
-
 ```
 
 
