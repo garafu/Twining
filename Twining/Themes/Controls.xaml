@@ -4,6 +4,7 @@
 
         <ResourceDictionary Source="../Controls/Button.xaml" />
         <ResourceDictionary Source="../Controls/CheckBox.xaml" />
+        <ResourceDictionary Source="../Controls/DataGrid.xaml" />
         <ResourceDictionary Source="../Controls/Label.xaml" />
         <ResourceDictionary Source="../Controls/ListBox.xaml" />
         <ResourceDictionary Source="../Controls/RadioButton.xaml" />

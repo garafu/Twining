@@ -4,7 +4,7 @@
 
         <ResourceDictionary Source="./Brushes.xaml" />
 
-        <ResourceDictionary Source="./Core.xaml" />
+        <ResourceDictionary Source="./Controls.xaml" />
 
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

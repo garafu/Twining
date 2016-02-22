@@ -28,6 +28,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Release\Twining.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="PresentationCore" />
@@ -43,12 +44,23 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commands\CommandBase.cs" />
     <Compile Include="Commands\DelegateCommand.cs" />
+    <Compile Include="Commands\Window\MaximizeCommand.cs" />
+    <Compile Include="Commands\Window\ShowSystemMenuCommand.cs" />
+    <Compile Include="Commands\Window\RestoreCommand.cs" />
+    <Compile Include="Commands\Window\MinimizeCommand.cs" />
+    <Compile Include="Commands\Window\CloseCommand.cs" />
+    <Compile Include="SystemParameters.cs" />
     <Compile Include="WindowCommands.cs" />
     <Compile Include="Marshal\User32.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Controls\DataGrid.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Controls\Button.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -85,7 +97,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Themes\Core.xaml">
+    <Page Include="Themes\Controls.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
