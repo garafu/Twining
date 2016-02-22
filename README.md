@@ -76,6 +76,19 @@ Sample code is following.
 <Button Content="Button" Style="{StaticResource btn-primary}"/>
 ```
 
+### DataGrid
+
+Can use following table style.
+
+* `table`
+* `table-bordered`
+
+`table` style is default.
+If you do not set "Style" attribute, the attribute is set "{StaticResource table}".
+```
+<DataGrid Style="{StaticResource table-bordered}" />
+```
+
 
 License
 --------------------------
